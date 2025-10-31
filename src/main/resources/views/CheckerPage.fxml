@@ -1,12 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controllers.CheckerPageController">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckerPageController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #241920;" />
+      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #241920;">
+         <children>
+            <Text fill="WHITE" layoutX="154.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Check your email list" wrappingWidth="176.80002441406253">
+               <font>
+                  <Font name="Dubai Regular" size="19.0" />
+               </font>
+            </Text>
+            <ScrollPane layoutX="330.0" layoutY="88.0" prefHeight="488.0" prefWidth="455.0">
+               <content>
+                  <TableView fx:id="resultsTableView" prefHeight="473.0" prefWidth="456.0">
+                    <columns>
+                      <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email" />
+                      <TableColumn fx:id="statusColumn" prefWidth="120.0" text="Status" />
+                      <TableColumn fx:id="sourceColumn" prefWidth="120.0" text="Source" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <Button fx:id="importEmailsBtn" layoutX="128.0" layoutY="111.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Import Emails" />
+            <Button fx:id="importProxiesBtn" layoutX="128.0" layoutY="151.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Import Proxies" />
+            <Line endX="88.70001220703125" endY="-1.0000152587890625" layoutX="226.0" layoutY="214.0" startX="-94.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
+            <Line endX="90.79998779296875" endY="-1.52587890625E-5" layoutX="225.0" layoutY="307.0" startX="-94.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
+            <Line endX="-94.79998779296875" endY="82.5" layoutX="225.0" layoutY="224.0" startX="-94.29998779296875" startY="-10.500015258789062" stroke="WHITE" />
+            <Line endX="-94.79998779296875" endY="82.5" layoutX="410.0" layoutY="226.0" startX="-94.79998779296875" startY="-12.500015258789062" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proxy Type :" wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="141.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sites To Check : " wrappingWidth="98.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="proxyTypeComboBox" layoutX="211.0" layoutY="222.0" prefHeight="25.0" prefWidth="98.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="HTTP" />
+                     <String fx:value="SOCKS4" />
+                     <String fx:value="SOCKS5" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <TextField fx:id="websiteUrlField" layoutX="141.0" layoutY="270.0" prefHeight="25.0" prefWidth="168.0" promptText="Enter Website URL" />
+            <Line endX="88.70001220703125" endY="-1.0000152587890625" layoutX="225.0" layoutY="334.0" startX="-20.20001220703125" startY="-1.0" stroke="WHITE" />
+            <Line endX="90.79998779296875" endY="-1.52587890625E-5" layoutX="224.0" layoutY="427.0" startX="-94.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
+            <Line endX="-94.79998779296875" endY="82.5" layoutX="224.0" layoutY="344.0" startX="-94.29998779296875" startY="-10.500015258789062" stroke="WHITE" />
+            <Line endX="-94.79998779296875" endY="82.5" layoutX="409.0" layoutY="346.0" startX="-94.79998779296875" startY="-12.500015258789062" stroke="WHITE" />
+            <Line endX="11.0" endY="-1.0" layoutX="141.0" layoutY="334.0" startX="-9.0" startY="-1.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="154.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" wrappingWidth="50.93670654296875" />
+            <Button fx:id="startBtn" layoutX="141.0" layoutY="355.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Start" />
+            <Button fx:id="stopBtn" layoutX="141.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Stop" />
+            <Line endX="88.70001220703125" endY="-1.0000152587890625" layoutX="224.0" layoutY="439.0" startX="-20.20001220703125" startY="-1.0" stroke="WHITE" />
+            <Line endX="90.79998779296875" endY="-1.52587890625E-5" layoutX="223.0" layoutY="544.0" startX="-94.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
+            <Line endX="-94.29998779296875" endY="95.0" layoutX="223.0" layoutY="449.0" startX="-94.29998779296875" startY="-10.500015258789062" stroke="WHITE" />
+            <Line endX="-94.79998779296875" endY="93.5" layoutX="408.0" layoutY="451.0" startX="-94.79998779296875" startY="-12.500015258789062" stroke="WHITE" />
+            <Line endX="11.0" endY="-1.0" layoutX="140.0" layoutY="439.0" startX="-9.0" startY="-1.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="154.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statics" wrappingWidth="50.93670654296875" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checked :" wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Good :" wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remain : " wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bad :" wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="142.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error :" wrappingWidth="66.038330078125" />
+            <Text fx:id="checkedCountText" fill="WHITE" layoutX="203.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="66.038330078125" />
+            <Text fx:id="remainCountText" fill="WHITE" layoutX="203.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="66.038330078125" />
+            <Text fx:id="goodCountText" fill="#069c36" layoutX="203.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="66.038330078125" />
+            <Text fx:id="badCountText" fill="#a60707" layoutX="203.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="66.038330078125" />
+            <Text fx:id="errorCountText" fill="#736666" layoutX="203.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="66.038330078125" />
+            <Text fill="WHITE" layoutX="135.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Proxies : " wrappingWidth="110.31423950195312" />
+            <Text fx:id="proxyCountText" fill="WHITE" layoutX="245.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="77.0" />
+            <Button fx:id="exportResultsBtn" layoutX="128.0" layoutY="551.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="187.0" text="Export Results" />
+         </children>
+      </Pane>
       <Pane fx:id="LeftBar" prefHeight="600.0" prefWidth="122.0" style="-fx-background-color: #000000;" />
+      <Line endX="538.4000244140625" endY="3.814697265625E-6" layoutX="254.0" layoutY="67.0" startX="-119.60000610351562" stroke="WHITE" />
    </children>
 </AnchorPane>

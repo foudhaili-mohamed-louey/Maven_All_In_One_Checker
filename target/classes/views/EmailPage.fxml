@@ -59,7 +59,7 @@
             <Text fill="WHITE" layoutX="163.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role-based,Admin,Bot Emails:" />
             <Text fill="WHITE" layoutX="163.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disposable Emails :" />
             <Text fill="WHITE" layoutX="163.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emails with Invalid TLDs" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emails with Invalid Domains" />
+            <Text fill="WHITE" layoutX="163.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultat Final" />
             <Text fx:id="ResultatEmailUncleaned" fill="WHITE" layoutX="344.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
             <Text fx:id="ResultatEmailWithInvalidCharacters" fill="WHITE" layoutX="344.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
             <Text fx:id="ResultatRoleBasedEmails" fill="WHITE" layoutX="344.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
