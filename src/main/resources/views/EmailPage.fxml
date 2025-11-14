@@ -13,68 +13,84 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmailPageController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #241920;">
+      <Pane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #241920;">
          <children>
-            <ScrollPane layoutX="475.0" layoutY="79.0" prefHeight="438.0" prefWidth="308.0">
+            <Line endX="658.199951171875" endY="7.62939453125E-6" layoutX="326.0" layoutY="45.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="230.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email List Editing" wrappingWidth="348.53675842285156">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+            <ScrollPane layoutX="225.0" layoutY="105.0" prefHeight="221.0" prefWidth="746.0">
                <content>
-                  <TableView fx:id="emailTableView" prefHeight="422.0" prefWidth="306.0">
+                  <TableView fx:id="emailTableView" prefHeight="220.0" prefWidth="743.0">
                     <columns>
-                      <TableColumn fx:id="emailColumn" prefWidth="305.60004884004593" text="Your Email List" />
+                      <TableColumn fx:id="emailColumn" prefWidth="743.999981701374" text="Emails" />
                     </columns>
                   </TableView>
                </content>
             </ScrollPane>
-            <Text fill="WHITE" layoutX="143.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit your email list" wrappingWidth="156.80002441406253">
-               <font>
-                  <Font name="Dubai Regular" size="19.0" />
-               </font>
-            </Text>
-            <Line endX="538.4000244140625" endY="3.814697265625E-6" layoutX="244.0" layoutY="57.0" startX="-100.0" stroke="WHITE" />
-            <Button fx:id="importButton" layoutX="475.0" layoutY="551.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Import" />
-            <Button fx:id="removeAllButton" layoutX="638.0" layoutY="551.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Remove All" />
-            <Button fx:id="cleanListButton" layoutX="143.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="308.0" text="Clean List" />
-            <Button fx:id="RemoveInvalidCharacters" layoutX="143.0" layoutY="335.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="308.0" text="Remove Invalid Characters" />
-            <Button fx:id="exportButton" layoutX="143.0" layoutY="506.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Export" />
-            <Button fx:id="passToCheckingButton" layoutX="309.0" layoutY="506.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Pass To Checking" />
-            <Line endX="204.0" layoutX="244.0" layoutY="79.0" startX="-5.5999755859375" stroke="WHITE" />
-            <Line endX="-100.0" endY="206.60000610351562" layoutX="243.0" layoutY="79.0" startX="-100.0" stroke="WHITE" />
-            <Line endX="-100.0" endY="208.80712890625" layoutX="548.0" layoutY="78.0" startX="-100.0" stroke="WHITE" />
-            <Line endX="200.5" endY="1.30712890625" layoutX="247.0" layoutY="286.0" startX="-103.5" startY="0.100006103515625" stroke="WHITE" />
-            <Text fill="WHITE" layoutX="192.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statics" wrappingWidth="38.199951171875" />
-            <Line endX="31.5999755859375" layoutX="150.0" layoutY="79.0" startX="-5.5999755859375" stroke="WHITE" />
-            
-            <!-- Progress Bar Section -->
-            <ProgressBar fx:id="progressBar" layoutX="163.0" layoutY="120.0" prefHeight="18.0" prefWidth="269.0" progress="0.0" />
-            <Text fx:id="progressText" fill="WHITE" layoutX="165.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready" wrappingWidth="262.39996337890625">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Text>
-            <Button fx:id="RemoveDisposableEmails" layoutX="140.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="314.0" text="Remove Disposable Emails" />
-            <Button fx:id="RemoveRoleBasedAdminBotEmails" layoutX="142.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="308.0" text="Remove Role-Based , Admin and Bot Emails" />
-            <Button fx:id="RemoveNonExistantDomains" layoutX="142.0" layoutY="468.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="308.0" text="Remove Non Existant Domains" />
-            <Button fx:id="RemoveInvalidTLDs" layoutX="142.0" layoutY="433.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="308.0" text="Remove Invalid TLDs" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emails uncleaned :" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emails With Invalid Characters :" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role-based,Admin,Bot Emails:" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disposable Emails :" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emails with Invalid TLDs" />
-            <Text fill="WHITE" layoutX="163.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultat Final" />
-            <Text fx:id="ResultatEmailUncleaned" fill="WHITE" layoutX="344.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="ResultatEmailWithInvalidCharacters" fill="WHITE" layoutX="344.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="ResultatRoleBasedEmails" fill="WHITE" layoutX="344.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="ResultatDisposableEmails" fill="WHITE" layoutX="344.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="ResultatEmailsWithInvalidTLDs" fill="WHITE" layoutX="344.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="ResultatEmailsWithInvalidDomains" fill="WHITE" layoutX="344.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fill="WHITE" layoutX="475.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultat : " />
-            <Text fx:id="ResultatTotal" fill="WHITE" layoutX="538.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fill="RED" layoutX="711.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Max Size 100k)" wrappingWidth="87.9998779296875">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Text>
+            <Button fx:id="btnImport" layoutX="230.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Import" />
+            <Button fx:id="btnRemoveImported" layoutX="535.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Remove Imported List" />
+            <Button fx:id="btnExport" layoutX="838.0" layoutY="328.0" mnemonicParsing="false" text="Exported Edited Emails" />
+            <Button fx:id="btnRemoveDuplicates" layoutX="242.0" layoutY="643.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Duplicated" />
+            <Button fx:id="btnRemoveEmptyLines" layoutX="242.0" layoutY="673.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove EmptyLines" />
+            <Button fx:id="btnTrimNormalize" layoutX="242.0" layoutY="737.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Trim and Normalize" />
+            <Button fx:id="btnRemoveWithoutAt" layoutX="486.0" layoutY="643.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Emails without @" />
+            <Button fx:id="btnRemoveMultipleAt" layoutX="486.0" layoutY="674.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Emails with more than 1 @" />
+            <Button fx:id="btnRemoveInvalidChars" layoutX="486.0" layoutY="706.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Invalid Characters" />
+            <Button fx:id="btnRemoveRoleBased" layoutX="242.0" layoutY="706.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Role Based Emails" />
+            <Button fx:id="btnRemoveBotAdmin" layoutX="728.0" layoutY="706.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Bot And Admin Emails" />
+            <Button fx:id="btnRemoveDisposable" layoutX="728.0" layoutY="643.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Disposable Emails" />
+            <Button fx:id="btnRemoveInvalidTLDs" layoutX="485.0" layoutY="607.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Invalid or Fake TLDs" />
+            <Button fx:id="btnRemoveNonExistentDomains" layoutX="728.0" layoutY="737.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Non Existent Domains" />
+            <Button fx:id="btnRemoveInvalidDomainFormat" layoutX="728.0" layoutY="673.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Remove Invalid Domain Format" />
+            <Button fx:id="btnRemoveTooShortLong" layoutX="485.0" layoutY="737.0" mnemonicParsing="false" text="Remove Too Schort Or Too Long Email" />
+            <Line endX="646.199951171875" layoutX="325.0" layoutY="596.0" startX="83.79998779296875" stroke="WHITE" />
+            <Line endX="649.199951171875" layoutX="323.0" layoutY="776.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="-98.300048828125" endY="182.5" layoutX="1071.0" layoutY="594.0" startX="-99.300048828125" startY="2.5" stroke="WHITE" />
+            <Line endX="-98.300048828125" endY="182.5" layoutX="323.0" layoutY="593.0" startX="-99.300048828125" startY="2.5" stroke="WHITE" />
+            <Line endX="-45.79998779296875" layoutX="325.0" layoutY="594.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="294.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit your Email List" />
+            <Line endX="645.9927978515625" layoutX="324.0" layoutY="379.0" startX="5.199981689453125" stroke="WHITE" />
+            <Line endX="649.199951171875" layoutX="322.0" layoutY="579.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="-98.300048828125" endY="182.5" layoutX="1070.0" layoutY="397.0" startX="-99.5072021484375" startY="-17.5" stroke="WHITE" />
+            <Line endX="-98.300048828125" endY="182.5" layoutX="322.0" layoutY="396.0" startX="-97.5" startY="-16.5" stroke="WHITE" />
+            <Line endX="-45.79998779296875" layoutX="325.0" layoutY="379.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="283.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statics" />
+            <Text fill="WHITE" layoutX="242.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultat Total : " />
+            <Text fill="WHITE" layoutX="242.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Lines Duplicated : " />
+            <Text fill="WHITE" layoutX="242.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Empty Lines : " />
+            <Text fill="WHITE" layoutX="242.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Role Based Emails : " />
+            <Text fill="WHITE" layoutX="242.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Tr/Nor Emails : " />
+            <Text fx:id="TXTEmailTotal" fill="#2ca947" layoutX="424.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTRoleBasedEmails" fill="RED" layoutX="424.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTEmptyLines" fill="RED" layoutX="424.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTEmailDuplicated" fill="#ef0202" layoutX="424.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTTrimmedNormalizedEmails" fill="RED" layoutX="424.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fill="WHITE" layoutX="242.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Invalid/Fake TLDs : " wrappingWidth="170.033203125" />
+            <Text fill="WHITE" layoutX="240.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of emails without @ : " />
+            <Text fill="WHITE" layoutX="627.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Emails &gt; 1 @ : " />
+            <Text fill="WHITE" layoutX="627.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Invalid Characters : " />
+            <Text fx:id="TXTEmailMoreThanOneAtt" fill="RED" layoutX="838.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTEmailsWithoutAtt" fill="RED" layoutX="424.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTInvalidFakeTLDs" fill="#ef0202" layoutX="424.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTEmailWithInvalidCharacter" fill="RED" layoutX="838.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fill="WHITE" layoutX="629.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of emails Too Sh/Long : " />
+            <Text fill="WHITE" layoutX="623.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Emails Disposable : " />
+            <Text fill="WHITE" layoutX="630.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Invalid Domain Format : " />
+            <Text fx:id="TXTEmailsDisposable" fill="RED" layoutX="838.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTLongShortEmails" fill="RED" layoutX="838.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fx:id="TXTInvalidDomainFormat" fill="RED" layoutX="838.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fill="WHITE" layoutX="630.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Bot/Admin Emails : " wrappingWidth="170.033203125" />
+            <Text fx:id="TXTBotAdminEmails" fill="#ef0202" layoutX="838.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <Text fill="WHITE" layoutX="630.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Non Existant Domains : " />
+            <Text fx:id="TXTNonExistantDomains" fill="RED" layoutX="838.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="99.80859375" />
+            <ProgressBar fx:id="progressBar" layoutX="229.0" layoutY="56.0" prefHeight="18.0" prefWidth="302.0" progress="0.0" />
+            <Text fx:id="TXTprogressBar" fill="#13a611" layoutX="229.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready" />
+            <Button fx:id="btnPassToChecking" layoutX="826.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Pass To Checking" />
          </children>
       </Pane>
-      <Pane fx:id="LeftBar" prefHeight="600.0" prefWidth="122.0" style="-fx-background-color: #000000;" />
+      <Pane fx:id="LeftBar" prefHeight="800.0" prefWidth="200.0" style="-fx-background-color: #FFF;" />
    </children>
 </AnchorPane>

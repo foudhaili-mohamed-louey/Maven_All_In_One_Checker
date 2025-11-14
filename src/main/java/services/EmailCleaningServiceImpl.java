@@ -257,6 +257,50 @@ public class EmailCleaningServiceImpl implements EmailCleaningService {
         }
         return cleaned;
     }
+    
+    //Export Data
+    @Override
+    public boolean exportCleanedEmails(List<String> emails, File file) throws IOException {
+        if (emails == null || file == null) {
+            return false;
+        }
+        
+        String fileName = file.getName().toLowerCase();
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            
+            if (fileName.endsWith(".csv")) {
+                // CSV format: write emails with proper escaping
+                for (String email : emails) {
+                    // Escape quotes and wrap in quotes if email contains comma or quote
+                    if (email.contains(",") || email.contains("\"")) {
+                        String escaped = email.replace("\"", "\"\"");
+                        writer.write("\"" + escaped + "\"");
+                    } else {
+                        writer.write(email);
+                    }
+                    writer.newLine();
+                }
+            } else if (fileName.endsWith(".txt")) {
+                // TXT format: plain text, one email per line
+                for (String email : emails) {
+                    writer.write(email);
+                    writer.newLine();
+                }
+            } else {
+                // Unsupported format
+                return false;
+            }
+            
+            writer.flush();
+            return true;
+            
+        } catch (IOException e) {
+            System.err.println("Error exporting emails: " + e.getMessage());
+            throw e;
+        }
+    }
+
 
  
 }

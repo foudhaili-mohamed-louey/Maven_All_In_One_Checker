@@ -1,13 +1,11 @@
 package services;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import javafx.collections.ObservableList;
 
-/**
- * Service interface for email list cleaning, validation, and filtering operations.
- * Provides comprehensive email validation and cleaning functionality.
- */
+
 public interface EmailCleaningService {
 
     // ========== Import / Export Operations ==========
@@ -145,4 +143,6 @@ public interface EmailCleaningService {
 	List<String> removeInvalidDomainFormat(List<String> emails);
 
 	List<String> removeTooShortOrTooLongEmails(List<String> emails);
+	
+	boolean exportCleanedEmails(List<String> emails, File file) throws IOException;
 }

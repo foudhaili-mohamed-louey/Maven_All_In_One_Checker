@@ -3,10 +3,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controllers.MarketingPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MarketingPageController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #241920;" />
-      <Pane fx:id="LeftBar" prefHeight="600.0" prefWidth="122.0" style="-fx-background-color: #000000;" />
+      <Pane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #241920;" />
+      <Pane fx:id="LeftBar" prefHeight="800.0" prefWidth="200.0" style="-fx-background-color: #000000;" />
    </children>
 </AnchorPane>

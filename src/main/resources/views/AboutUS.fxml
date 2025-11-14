@@ -1,29 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutUSController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutUSController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #241920;">
+      <Pane fx:id="LeftBar" prefHeight="800.0" prefWidth="200.0" style="-fx-background-color: #000000;" />
+      <Pane layoutX="200.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #241920;">
          <children>
-            <Line endX="539.4000244140625" layoutX="223.0" layoutY="564.0" startX="-58.20001220703125" stroke="WHITE" />
-            <Pane fx:id="LeftBar" prefHeight="600.0" prefWidth="122.0" style="-fx-background-color: #000000;" />
-            <Text fill="#fcfcfc" layoutX="164.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Made By " />
-            <Text fill="#fcfcfc" layoutX="259.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Foudhaili Mohamed Louey" />
-            <Text fill="#fcfcfc" layoutX="464.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Louhichi Oussama" />
-            <Text fill="#fcfcfc" layoutX="648.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aissa Hamza" />
-            <Text fill="WHITE" layoutX="373.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All In one Checker" textAlignment="CENTER" wrappingWidth="181.54730224609375">
+            <Line endX="651.5999755859375" layoutX="124.0" layoutY="754.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="24.0" layoutY="781.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Made By :" wrappingWidth="78.995361328125">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="103.0" layoutY="780.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Foudhaili Mohamed Louay" wrappingWidth="192.59539794921875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="753.0" layoutY="765.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/tunisia.png" />
+               </image>
+            </ImageView>
+
+            <!-- Page Title -->
+            <Text fill="WHITE" layoutX="314.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All In One Checker" textAlignment="CENTER">
                <font>
                   <Font size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="189.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EmailValidator is a desktop application designed to help users clean and manage their email lists efficiently. It allows importing large lists of emails, verifying their validity, filtering invalid or temporary addresses, and identifying emails linked to specific platforms such as Amazon or Alibaba. The application provides a simple and intuitive interface to generate reliable and targeted email lists, ideal for digital marketing and communication campaigns." textAlignment="CENTER" wrappingWidth="550.81494140625" />
-            <Line endX="129.5999755859375" layoutX="223.0" layoutY="93.0" startX="-58.20001220703125" stroke="WHITE" />
-            <Line endX="129.5999755859375" layoutX="632.0" layoutY="93.0" startX="-58.20001220703125" stroke="WHITE" />
+
+            <!-- Decorative Lines -->
+            <Line endX="157.4" layoutX="136.0" layoutY="93.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="157.4" layoutX="617.0" layoutY="93.0" startX="-100.0" stroke="WHITE" />
+
+            <!-- Section 1 -->
+            <Text fill="#00FFFF" layoutX="35.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What is All In One Checker?" wrappingWidth="720.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="35.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="720.0" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <text>
+                  <![CDATA[
+All In One Checker is a modern and powerful desktop application designed to make your online tasks easier, faster, and more organized. Instead of using multiple tools for different operations, All In One Checker brings everything together in one smart and efficient platform.
+                  ]]>
+               </text>
+            </Text>
+
+            <!-- Section 2 -->
+            <Text fill="#00FFFF" layoutX="35.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What can users do with it?" wrappingWidth="720.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="35.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="720.0" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <text>
+                  <![CDATA[
+With All In One Checker, users can perform multiple actions such as verifying email lists, checking proxy validity, managing API keys, and exporting verified results into TXT or CSV formats. It’s built to handle large datasets efficiently and provide accurate, real-time feedback. The app also offers features like progress tracking, result filtering, and clear visual feedback to make every operation smooth and reliable.
+                  ]]>
+               </text>
+            </Text>
+
+            <!-- Section 3 -->
+            <Text fill="#00FFFF" layoutX="35.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Why choose All In One Checker?" wrappingWidth="720.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="35.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="720.0" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <text>
+                  <![CDATA[
+Because it saves time, boosts productivity, and ensures accuracy. Our goal is to provide a clean and intuitive interface that anyone—from beginners to professionals—can use with ease. All In One Checker combines simplicity, speed, and precision, making it the only tool you need for managing and validating your data securely.
+                  ]]>
+               </text>
+            </Text>
+
          </children>
       </Pane>
    </children>
