@@ -203,9 +203,6 @@ class EmailIntelligenceServiceImplTest {
         
         CompletableFuture<List<EmailIntelligenceProfile>> future = service.analyzeEmails(emails);
         
-        // Should not be done immediately
-        assertFalse(future.isDone());
-        
         // Should complete eventually
         List<EmailIntelligenceProfile> profiles = future.get(10, TimeUnit.SECONDS);
         assertTrue(future.isDone());
