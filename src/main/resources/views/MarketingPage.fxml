@@ -18,7 +18,8 @@
                   <Font name="Dubai Regular" size="19.0" />
                </font>
             </Text>
-            <Button fx:id="analyzeButton" layoutX="143.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Analyze Emails" />
+            <Button fx:id="importButton" layoutX="143.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Import Email List" />
+            <Button fx:id="analyzeButton" layoutX="363.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Analyze Emails" />
             <ProgressBar fx:id="analysisProgress" layoutX="143.0" layoutY="110.0" prefHeight="18.0" prefWidth="500.0" progress="0.0" visible="false" />
             <WebView fx:id="reportWebView" layoutX="143.0" layoutY="140.0" prefHeight="440.0" prefWidth="640.0" />
          </children>
