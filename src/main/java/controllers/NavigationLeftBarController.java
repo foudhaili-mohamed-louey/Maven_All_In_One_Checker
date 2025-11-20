@@ -26,18 +26,6 @@ public class NavigationLeftBarController {
 		
 	}
 	
-	public void switchToCheckerPage(MouseEvent event) throws IOException
-	{
-		System.out.println("switchToCheckerPage works !!!");
-		Parent root = FXMLLoader.load(getClass().getResource("/views/CheckerPage.fxml"));
-		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		
-		
-	}
-	
 	public void switchToMarketingPage(MouseEvent event) throws IOException
 	{
 		System.out.println("switchToMarketingPage works !!!");
