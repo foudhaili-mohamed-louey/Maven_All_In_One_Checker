@@ -37,3 +37,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Environment and configuration
+.env
+.env.local
+.env.*.local
