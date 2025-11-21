@@ -1,6 +1,7 @@
 package services.intelligence.collectors;
 
 import services.intelligence.models.ServicePresence;
+import services.proxy.TorHttpClient;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,12 +9,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Checks presence on key services
- * Note: This is a simplified implementation that doesn't make actual API calls
- * In a production environment, this would integrate with services like Holehe
- * or similar tools that check service registrations.
+ * Checks presence on key services using Holehe integration
+ * Integrates with Holehe (when available) or uses fallback checking
  */
 public class ServicePresenceChecker {
+    
+    private final HoleheClient holeheClient;
+    private final boolean useHolehe;
     
     // Top priority services to check (in a real implementation)
     private static final List<String> PRIORITY_SERVICES = Arrays.asList(
@@ -23,11 +25,38 @@ public class ServicePresenceChecker {
     );
 
     /**
+     * Create checker without Holehe/Tor integration (mock mode)
+     */
+    public ServicePresenceChecker() {
+        this(null, false);
+    }
+    
+    /**
+     * Create checker with optional Holehe integration
+     * @param torClient Tor-enabled HTTP client (null to disable)
+     * @param useHolehe Whether to use Holehe for checking
+     */
+    public ServicePresenceChecker(TorHttpClient torClient, boolean useHolehe) {
+        this.useHolehe = useHolehe && torClient != null;
+        this.holeheClient = (torClient != null) ? new HoleheClient(torClient, false) : null;
+    }
+
+    /**
      * Checks presence on key services
-     * Note: This is a mock implementation that returns empty results
-     * In production, this would use actual API calls with rate limiting
+     * Uses Holehe integration if enabled, otherwise returns mock results
      */
     public ServicePresence checkServices(String email) {
+        // Use Holehe if enabled
+        if (useHolehe && holeheClient != null) {
+            try {
+                return holeheClient.checkEmail(email);
+            } catch (Exception e) {
+                System.err.println("Holehe check failed, falling back to mock: " + e.getMessage());
+                // Fall through to mock implementation
+            }
+        }
+        
+        // Mock implementation for when Holehe is not enabled
         ServicePresence presence = new ServicePresence();
         
         // In a real implementation, this would:
