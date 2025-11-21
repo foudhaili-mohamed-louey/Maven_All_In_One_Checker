@@ -1,5 +1,6 @@
 package services;
 
+import config.TorProxyConfig;
 import services.intelligence.analysis.PersonaAnalyzer;
 import services.intelligence.analysis.SecurityScorer;
 import services.intelligence.collectors.EmailPatternAnalyzer;
@@ -7,6 +8,7 @@ import services.intelligence.collectors.GravatarCollector;
 import services.intelligence.collectors.ServicePresenceChecker;
 import services.intelligence.models.*;
 import services.intelligence.reporting.HTMLReportGenerator;
+import services.proxy.TorHttpClient;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 
 /**
  * Implementation of email intelligence service
+ * Supports Tor proxy integration for Holehe and Gravatar
  */
 public class EmailIntelligenceServiceImpl implements EmailIntelligenceService {
     
@@ -26,12 +29,29 @@ public class EmailIntelligenceServiceImpl implements EmailIntelligenceService {
     private final PersonaAnalyzer personaAnalyzer;
     private final SecurityScorer securityScorer;
     private final HTMLReportGenerator reportGenerator;
+    private final TorHttpClient torClient;
 
+    /**
+     * Create service with default configuration (Tor disabled)
+     */
     public EmailIntelligenceServiceImpl() {
+        this(TorProxyConfig.fromEnvironment());
+    }
+    
+    /**
+     * Create service with custom Tor configuration
+     * @param torConfig Tor proxy configuration
+     */
+    public EmailIntelligenceServiceImpl(TorProxyConfig torConfig) {
         this.executorService = Executors.newFixedThreadPool(4);
-        this.gravatarCollector = new GravatarCollector();
+        this.torClient = new TorHttpClient(torConfig);
+        
+        // Initialize collectors with Tor support
+        this.gravatarCollector = new GravatarCollector(torClient);
+        this.serviceChecker = new ServicePresenceChecker(torClient, torConfig.isTorEnabled());
+        
+        // Other components
         this.emailAnalyzer = new EmailPatternAnalyzer();
-        this.serviceChecker = new ServicePresenceChecker();
         this.personaAnalyzer = new PersonaAnalyzer();
         this.securityScorer = new SecurityScorer();
         this.reportGenerator = new HTMLReportGenerator();

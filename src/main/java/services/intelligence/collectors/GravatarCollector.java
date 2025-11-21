@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import services.intelligence.models.GravatarData;
+import services.proxy.TorHttpClient;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -17,15 +18,34 @@ import java.util.List;
 
 /**
  * Collects Gravatar profile data for email addresses
+ * Supports routing through Tor proxy for enhanced privacy
  */
 public class GravatarCollector {
     private static final String GRAVATAR_API_URL = "https://www.gravatar.com/";
     private final OkHttpClient httpClient;
+    private final TorHttpClient torClient;
 
+    /**
+     * Create GravatarCollector with direct HTTP connection
+     */
     public GravatarCollector() {
-        this.httpClient = new OkHttpClient.Builder()
-                .followRedirects(true)
-                .build();
+        this(null);
+    }
+    
+    /**
+     * Create GravatarCollector with optional Tor support
+     * @param torClient Tor-enabled HTTP client (null for direct connection)
+     */
+    public GravatarCollector(TorHttpClient torClient) {
+        this.torClient = torClient;
+        
+        if (torClient != null) {
+            this.httpClient = torClient.getClient();
+        } else {
+            this.httpClient = new OkHttpClient.Builder()
+                    .followRedirects(true)
+                    .build();
+        }
     }
 
     /**
