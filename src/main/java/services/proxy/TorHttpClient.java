@@ -137,11 +137,13 @@ public class TorHttpClient {
                 out.flush();
                 
                 lastCircuitRotation = System.currentTimeMillis();
+                // Note: Using System.out for console feedback - consistent with existing codebase
                 System.out.println("Tor circuit rotated successfully");
             }
         } catch (Exception e) {
             // Circuit rotation failed - log but continue
             // This is not critical as requests can still proceed with current circuit
+            // Note: Using System.err for error feedback - consistent with existing codebase
             System.err.println("Warning: Failed to rotate Tor circuit: " + e.getMessage());
         }
     }

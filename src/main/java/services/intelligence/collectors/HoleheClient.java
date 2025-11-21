@@ -67,6 +67,13 @@ public class HoleheClient {
     private ServicePresence checkViaCommandLine(String email) {
         ServicePresence presence = new ServicePresence();
         
+        // Validate email format to prevent command injection
+        if (!isValidEmail(email)) {
+            System.err.println("Invalid email format, skipping holehe check");
+            return presence;
+        }
+        
+        Process process = null;
         try {
             // Execute holehe command with JSON output
             ProcessBuilder pb = new ProcessBuilder("holehe", email, "--only-used");
@@ -78,17 +85,16 @@ public class HoleheClient {
                 env.put("https_proxy", "socks5://127.0.0.1:9050");
             }
             
-            Process process = pb.start();
+            process = pb.start();
             
-            // Read output
-            BufferedReader reader = new BufferedReader(
-                new InputStreamReader(process.getInputStream())
-            );
-            
+            // Read output using try-with-resources
             StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    output.append(line).append("\n");
+                }
             }
             
             int exitCode = process.waitFor();
@@ -105,9 +111,28 @@ public class HoleheClient {
         } catch (Exception e) {
             System.err.println("Error executing holehe: " + e.getMessage());
             // Return empty presence on error
+        } finally {
+            if (process != null && process.isAlive()) {
+                process.destroyForcibly();
+            }
         }
         
         return presence;
+    }
+    
+    /**
+     * Validate email format to prevent command injection
+     */
+    private boolean isValidEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            return false;
+        }
+        
+        // Basic email validation pattern
+        // Allows alphanumeric, dots, hyphens, underscores in local part
+        // and alphanumeric, dots, hyphens in domain part
+        String emailPattern = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(emailPattern);
     }
     
     /**
@@ -174,6 +199,11 @@ public class HoleheClient {
      * Check GitHub presence
      */
     private boolean checkGitHub(String email) throws IOException {
+        // Validate email format
+        if (!isValidEmail(email) || !email.contains("@")) {
+            return false;
+        }
+        
         // GitHub doesn't have a direct email lookup API
         // This is a simplified check
         String username = email.split("@")[0];
@@ -283,12 +313,17 @@ public class HoleheClient {
      * Check if holehe is installed
      */
     private boolean isHoleheInstalled() {
+        Process process = null;
         try {
-            Process process = new ProcessBuilder("holehe", "--help").start();
+            process = new ProcessBuilder("holehe", "--help").start();
             int exitCode = process.waitFor();
             return exitCode == 0 || exitCode == 1; // Some CLIs return 1 for help
         } catch (Exception e) {
             return false;
+        } finally {
+            if (process != null && process.isAlive()) {
+                process.destroyForcibly();
+            }
         }
     }
 }

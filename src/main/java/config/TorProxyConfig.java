@@ -71,10 +71,46 @@ public class TorProxyConfig {
         
         boolean torEnabled = "true".equalsIgnoreCase(enabled);
         String torHost = host != null ? host : DEFAULT_TOR_HOST;
-        int torPort = port != null ? Integer.parseInt(port) : DEFAULT_TOR_PORT;
-        int connectionTimeoutMs = connTimeout != null ? Integer.parseInt(connTimeout) : DEFAULT_CONNECTION_TIMEOUT_MS;
-        int readTimeoutMs = readTimeout != null ? Integer.parseInt(readTimeout) : DEFAULT_READ_TIMEOUT_MS;
-        int circuitRotationMs = rotationInterval != null ? Integer.parseInt(rotationInterval) : DEFAULT_CIRCUIT_ROTATION_INTERVAL_MS;
+        
+        int torPort = DEFAULT_TOR_PORT;
+        try {
+            if (port != null) {
+                torPort = Integer.parseInt(port);
+            }
+        } catch (NumberFormatException e) {
+            // Fall back to default port on parse error
+            torPort = DEFAULT_TOR_PORT;
+        }
+        
+        int connectionTimeoutMs = DEFAULT_CONNECTION_TIMEOUT_MS;
+        try {
+            if (connTimeout != null) {
+                connectionTimeoutMs = Integer.parseInt(connTimeout);
+            }
+        } catch (NumberFormatException e) {
+            // Fall back to default timeout
+            connectionTimeoutMs = DEFAULT_CONNECTION_TIMEOUT_MS;
+        }
+        
+        int readTimeoutMs = DEFAULT_READ_TIMEOUT_MS;
+        try {
+            if (readTimeout != null) {
+                readTimeoutMs = Integer.parseInt(readTimeout);
+            }
+        } catch (NumberFormatException e) {
+            // Fall back to default timeout
+            readTimeoutMs = DEFAULT_READ_TIMEOUT_MS;
+        }
+        
+        int circuitRotationMs = DEFAULT_CIRCUIT_ROTATION_INTERVAL_MS;
+        try {
+            if (rotationInterval != null) {
+                circuitRotationMs = Integer.parseInt(rotationInterval);
+            }
+        } catch (NumberFormatException e) {
+            // Fall back to default interval
+            circuitRotationMs = DEFAULT_CIRCUIT_ROTATION_INTERVAL_MS;
+        }
         
         return new TorProxyConfig(torHost, torPort, torEnabled, 
                                   connectionTimeoutMs, readTimeoutMs, circuitRotationMs);

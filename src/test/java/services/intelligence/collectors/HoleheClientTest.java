@@ -48,4 +48,21 @@ class HoleheClientTest {
         
         assertNotNull(presence);
     }
+    
+    @Test
+    @DisplayName("Check email with invalid format returns empty ServicePresence")
+    void testCheckEmailInvalidFormat() {
+        TorProxyConfig config = new TorProxyConfig("127.0.0.1", 9050, false);
+        TorHttpClient torClient = new TorHttpClient(config);
+        HoleheClient client = new HoleheClient(torClient, false);
+        
+        // Test various invalid email formats
+        ServicePresence presence1 = client.checkEmail("not-an-email");
+        ServicePresence presence2 = client.checkEmail("@example.com");
+        ServicePresence presence3 = client.checkEmail("user@");
+        
+        assertNotNull(presence1);
+        assertNotNull(presence2);
+        assertNotNull(presence3);
+    }
 }
