@@ -14,8 +14,6 @@ public class EmailCleaningServiceImpl implements EmailCleaningService {
     private static final String EMAIL_PATTERN = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     private static final Pattern EMAIL_REGEX = Pattern.compile(EMAIL_PATTERN);
 
-    // ================== IMPORT / REMOVE ==================
-
     @Override
     public ObservableList<String> importData(File file) {
         importedEmails.clear();

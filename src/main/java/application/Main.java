@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/AboutUs.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/views/AboutUS.fxml"));
             root.setStyle("-fx-background-color: #241920;");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

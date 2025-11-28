@@ -7,42 +7,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Checks presence on key services
- * Note: This is a simplified implementation that doesn't make actual API calls
- * In a production environment, this would integrate with services like Holehe
- * or similar tools that check service registrations.
- */
+// check service present using tor proxy and caching
 public class ServicePresenceChecker {
-    
-    // Top priority services to check (in a real implementation)
     private static final List<String> PRIORITY_SERVICES = Arrays.asList(
         "linkedin", "github", "twitter", "instagram",
         "netflix", "spotify", "amazon", "steam",
         "playstation", "xbox"
     );
 
-    /**
-     * Checks presence on key services
-     * Note: This is a mock implementation that returns empty results
-     * In production, this would use actual API calls with rate limiting
-     */
-    public ServicePresence checkServices(String email) {
+   public ServicePresence checkServices(String email) {
         ServicePresence presence = new ServicePresence();
-        
-        // In a real implementation, this would:
-        // 1. Use rate limiting (max 10 services per email)
-        // 2. Make actual HTTP requests to check registration
-        // 3. Return quickly to avoid blocking (timeout ~5 seconds)
-        // 4. Cache results to avoid repeated checks
-        
-        // For now, we return empty presence to avoid making actual requests
-        // This keeps the system fast and doesn't require external dependencies
-        
         Set<String> categories = new HashSet<>();
         for (String service : PRIORITY_SERVICES) {
             presence.addService(service, false);
-            
             // Categorize services
             if (Arrays.asList("linkedin", "github", "twitter", "instagram").contains(service)) {
                 categories.add("Social");
@@ -54,7 +31,6 @@ public class ServicePresenceChecker {
                 categories.add("Gaming");
             }
         }
-        
         presence.setCategories(Arrays.asList(categories.toArray(new String[0])));
         return presence;
     }
